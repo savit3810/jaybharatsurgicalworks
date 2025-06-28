@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007acc" />
+  <title>Product Categories - JAY BHARAT SURGICAL WORKS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f1f8e9, #aed581);
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(90deg, #689f38, #33691e);
+      color: white;
+      padding: 25px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 50px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 30px;
+      color: #33691e;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(102, 187, 106, 0.2);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(102, 187, 106, 0.4);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .category-card h3 {
+      margin: 15px 0;
+      font-size: 20px;
+      color: #2e7d32;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #33691e;
+      color: white;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Categories</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="myorder.html">Orders</a>
+      <a href="cart.html">Cart</a>
+      <a href="account.html">Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Product Categories</h2>
+    <div class="categories-grid">
+      <div class="category-card" onclick="goToCategory('Arthroscopy')">
+        <img src="https://i.postimg.cc/23TFSyS9/Arthroscopy-Instruments.jpg" alt="Arthroscopy Tools">
+        <h3>Arthroscopy Tools</h3>
+      </div>
+      <div class="category-card" onclick="goToCategory('Gynecology')">
+        <img src="https://i.postimg.cc/T52VcMCc/Gynecology-Instruments.jpg" alt="Gynecology Tools">
+        <h3>Gynecology Tools</h3>
+      </div>
+      <div class="category-card" onclick="goToCategory('Laparoscopic')">
+        <img src="https://i.postimg.cc/qzRchrtJ/Laproscopic-Instruments.jpg" alt="Laparoscopic Tools">
+        <h3>Laparoscopic Tools</h3>
+      </div>
+      <div class="category-card" onclick="goToCategory('Urology')">
+        <img src="https://i.postimg.cc/JtR58ZMB/Urology-Instruments.jpg" alt="Urology Tools">
+        <h3>Urology Tools</h3>
+      </div>
+      <div class="category-card" onclick="goToCategory('Electro Surgery')">
+        <img src="https://i.postimg.cc/jwtPsY0r/Electro-Surgery-Instruments.jpg" alt="Electro Surgery Tools">
+        <h3>Electro Surgery</h3>
+      </div>
+      <div class="category-card" onclick="goToCategory('Hysteroscopy')">
+        <img src="https://i.postimg.cc/0MnmjXPK/Hysteroscopy-Instrument.jpg" alt="Hysteroscopy Tools">
+        <h3>Hysteroscopy Tools</h3>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Industry Store. All rights reserved.
+  </footer>
+
+  <script>
+    function goToCategory(category) {
+      localStorage.setItem("selectedCategory", category);
+      window.location.href = "product.html"; // Will be filtered on product.html based on this category
+    }
+  </script>
+</body>
+</html>

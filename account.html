@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Account - JAY BHARAT SURGICAL WORKS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0277bd;
+      text-align: center;
+    }
+    .info {
+      margin-top: 30px;
+    }
+    .info p {
+      font-size: 16px;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .info span {
+      font-weight: bold;
+    }
+    .logout-btn {
+      background-color: #0288d1;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>My Account</h2>
+    <div class="info" id="accountInfo">
+      <p><span>Name:</span> <span id="userName">Loading...</span></p>
+      <p><span>Email:</span> <span id="userEmail">Loading...</span></p>
+      <p><span>Phone:</span> <span id="userPhone">Loading...</span></p>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3t7Zx2kMXYoUMFJXzhhxWTJgHqNF83cY",
+      authDomain: "jay-bharat-surgical-works.firebaseapp.com",
+      projectId: "jay-bharat-surgical-works",
+      storageBucket: "jay-bharat-surgical-works.appspot.com",
+      messagingSenderId: "792288542566",
+      appId: "1:792288542566:web:94d42a6ea86529893c12a7"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Load user data
+    window.onload = () => {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      if (userData) {
+        document.getElementById("userName").textContent = userData.name || "N/A";
+        document.getElementById("userEmail").textContent = userData.email || "N/A";
+        document.getElementById("userPhone").textContent = userData.phone || "N/A";
+      } else {
+        alert("No user logged in");
+        window.location.href = "login.html";
+      }
+    };
+
+    // Logout function
+    function logout() {
+      auth.signOut().then(() => {
+        localStorage.removeItem("user");
+        alert("Logged out successfully");
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>
